@@ -1,0 +1,7 @@
+(and (require 'elscreen nil t)
+      (define-key elscreen-map [(control space)] 'elscreen-next)
+      (define-key elscreen-map [(control @)] 'elscreen-next)
+      (define-key elscreen-map "\C-@" 'elscreen-next)
+      (define-key elscreen-map [?\C-\ ] 'elscreen-next)
+      (define-key elscreen-map "@" 'elscreen-next)
+      (define-key elscreen-map [?\ ] 'elscreen-next))
