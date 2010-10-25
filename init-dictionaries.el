@@ -19,31 +19,3 @@
 ;; 最大表示数
 (setq lookup-max-hits 256)
 
-;; dot.lookup
-;; ;; stemmer
-;; (lookup-set-dictionary-option
-;;  "ndtp+localhost:eiwa/chujiten" ':stemmer 'stem-english)
-;; (lookup-set-dictionary-option
-;;  "ndeb+/usr/local/share/dict/chujiten:chujiten" ':stemmer 'stem-english)
-
-;; ;; max
-;; ;(defcustom lookup-max-hits 0
-;; ;	:type 'integer
-;; ;	:group 'lookup-general-options)
-;; ;(defcustom lookup-max-text 0
-;; ;	:type 'integer
-;; ;	:group 'lookup-general-options)
-
-;; (setq ndeb-binary-programs
-;; 	'((wave "mplayer")
-;; 	  (mpeg "mplayer")))
-;; 	;'((wave "artsplay")
-;; 	;  (mpeg "mplayer")))
-
-;; (setq ndeb-play-sound-from-entry "z")
-;; (setq ndeb-play-movie-from-entry "x")
-;; ;(define-key lookup-entry-mode-map "z" 'lookup-entry-play-ndeb-sound)
-;; ;(define-key lookup-entry-mode-map "x" 'lookup-entry-play-ndeb-movie)
-
-;; (if (<= emacs-major-version 20)
-;;     (setq lookup-use-bitmap t))

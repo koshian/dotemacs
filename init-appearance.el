@@ -63,3 +63,61 @@
         (set-fontset-font fn 'japanese-jisx0212 `(,my-font-ja . ,rg))))))
 
 
+
+(global-font-lock-mode t)
+(if window-system
+    (progn
+      ;; font-lock mode
+      (require 'font-lock)
+      (global-font-lock-mode t)
+      (add-hook 'font-lock-mode-hook
+		'(lambda ()
+;		   (set-face-foreground 'font-lock-builtin-face "purple")
+		   (set-face-foreground 'font-lock-comment-face "IndianRed")
+		   (set-face-foreground 'font-lock-string-face  "purple")
+		   (set-face-foreground 'font-lock-keyword-face "blue")
+;		   (set-face-foreground 'font-lock-constant-face "black")
+		   (set-face-foreground 'font-lock-function-name-face "blue")
+		   (set-face-foreground 'font-lock-type-face "IndianRed")
+		   (set-face-foreground
+		    'font-lock-variable-name-face "DarkGreen")
+;		   (set-face-foreground 'font-lock-warning-face "blue")
+		   (set-face-bold-p 'font-lock-function-name-face t)
+;		   (set-face-bold-p 'font-lock-warning-face t)
+		   ))))
+
+(if (>= emacs-major-version 21)
+    (progn
+      ;; font-lock mode
+      (require 'font-lock)
+      (global-font-lock-mode t)
+      (add-hook 'font-lock-mode-hook
+		'(lambda ()
+		   (set-face-bold-p 'font-lock-function-name-face t)
+		   (set-face-bold-p 'font-lock-warning-face t)))))
+
+(if (>= emacs-major-version 21)
+    (custom-set-faces
+     '(sh-heredoc-face ((((class color) (background light))
+			 (:foreground "IndianRed"))))
+     '(builtin-face ((((class color) (background light))
+		      (:foreground "purple"))))
+     '(comment-face ((((class color) (background light))
+		      (:foreground "IndianRed"))))
+     '(string-face  ((((class color) (background light))
+		      (:foreground "purple"))))
+     '(keyword-face ((((class color) (background light))
+		      (:foreground "blue"))))
+     '(constant-face ((((class color) (background light))
+		       (:foreground "black"))))
+     '(function-name-face ((((class color) (background light))
+			    (:foreground "blue"))))
+     '(variable-name-face ((((class color) (background light))
+			    (:foreground "DarkGreen"))))
+     ;'(variable-name-face ((((class color) (background light))
+	;		    (:foreground "Green"))))
+     '(type-face ((((class color) (background light))
+		   (:foreground "IndianRed"))))
+     '(warning-face ((((class color) (background light))
+		      (:foreground "blue"))))))
+
