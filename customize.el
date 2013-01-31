@@ -75,9 +75,11 @@ This is just like calling `other-window' with ARG negated."
 (setq next-line-add-newlines nil)
 
 ;; Emacs20以降ならiswitchbを使う。
-(if (>= emacs-major-version 20)
-	(iswitchb-mode)
-      (iswitchb-default-keybindings))
+(if (and (>= emacs-major-version 20)
+         (< emacs-major-version 23))
+    (progn
+      (iswitchb-mode)
+      (iswitchb-default-keybindings)))
 
 (setq fill-column 60)
 
@@ -100,3 +102,5 @@ This is just like calling `other-window' with ARG negated."
 	(iswitchb-mode)
       (iswitchb-default-keybindings))
 
+;; use aspell
+(setq ispell-program-name "aspell")

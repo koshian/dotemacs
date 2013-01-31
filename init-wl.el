@@ -16,3 +16,6 @@
 (setq Info-directory-list 
       `( ,(expand-file-name "../info" data-directory)
          "/usr/local/info"))
+
+(require 'tls)
+(set-alist 'elmo-network-stream-type-alist "!opentls" '(opentls nil open-tls-stream))
