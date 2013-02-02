@@ -12,14 +12,15 @@
 
 (setq vc-header-alist nil)
 
-(add-to-list 'load-path "~/.emacs.d/packages/")
-
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(package-initialize)
+(if (locate-library "package")
+    (progn
+      (require 'package)
+      (add-to-list 'load-path "~/.emacs.d/packages/")
+      (add-to-list 'package-archives
+		   '("melpa" . "http://melpa.milkbox.net/packages/") t)
+      (add-to-list 'package-archives
+		   '("marmalade" . "http://marmalade-repo.org/packages/") t)
+      (package-initialize)))
 
 (when (require 'edit-server nil t)
   (setq edit-server-new-frame nil)
