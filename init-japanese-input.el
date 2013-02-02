@@ -1,0 +1,16 @@
+(when (locate-library "yc")
+  (load "yc")
+  (global-yc-mode 1)
+  (global-set-key "\C-o" 'canna-toggle-japanese-mode)
+  (global-set-key "\C-o" 'yc-input-mode)
+  (setq yc-use-color nil)
+  (define-key yc-edit-mode-map "\C-h" 'yc-edit-backward-delete-char))
+
+(when (locate-library "mozc")
+  (require 'mozc)
+  (set-language-environment "Japanese")
+  (setq default-input-method "japanese-mozc")
+  (setq mozc-candidate-style 'echo-area)
+  (setq mozc-candidate-style 'overlay)
+  (global-set-key (kbd "C-o") 'toggle-input-method))
+
