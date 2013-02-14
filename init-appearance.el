@@ -1,7 +1,8 @@
 ;メニューバーオフ
 (menu-bar-mode 0)
 ; スクロールバーオフ
-(scroll-bar-mode nil)
+(unless (eq window-system nil)
+    (scroll-bar-mode nil))
 ; さらにemacs21以上の場合はこれを追加。
 (if (>= emacs-major-version 21)
     (progn
