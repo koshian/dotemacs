@@ -10,5 +10,6 @@
           'ruby-mode-hook-for-fixing-ruby-electric)
 (remove-hook 'ruby-mode-hook 'ruby-electric-mode)
 
+(if (locate-library "ruby-end")
+    (require 'ruby-end))
 
-(require 'ruby-end)
