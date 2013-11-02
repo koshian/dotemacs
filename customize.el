@@ -43,7 +43,29 @@ This is just like calling `other-window' with ARG negated."
 (global-set-key "\C-x\C-o" 'canna-touroku-region)
 
 ;; bufferの文字コード変換
-(global-set-key [(super c)] 'set-buffer-file-coding-system)
+;;(global-set-key [(super c)] 'set-buffer-file-coding-system)
+(global-set-key [(super c)] 'set-buffer-correct-coding-system)
+
+(defun set-buffer-correct-coding-system(coding-system &optional force nomodify)
+  "Correct coding system"
+  (interactive
+   (list (read-buffer-file-coding-system)
+         current-prefix-arg))
+  (let ((coding-system-for-read coding-system)
+        (coding-system-for-write coding-system)
+        (coding-system-require-warning t))
+    (find-alternate-file buffer-file-name)))
+    
+;  (message "Correct coding system is %s" coding-system))
+
+(defun multiply-by-seven (number)
+  "Multiply NUMBER by seven."
+  (interactive "p")
+  (message "The result is %d" (* 7 number)))
+  
+(if (boundp 'buffer-file-coding-system)
+    (setq-default buffer-file-coding-system 'utf-8)
+  (setq default-buffer-file-coding-system 'utf-8))
 
 ;; Carbon EmacsではOptionキーをSuperとして使う
 (if (featurep 'carbon-emacs-package)
@@ -104,3 +126,4 @@ This is just like calling `other-window' with ARG negated."
 
 ;; use aspell
 (setq ispell-program-name "aspell")
+

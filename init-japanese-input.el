@@ -32,5 +32,5 @@
   (set-language-environment "Japanese")
   (setq default-input-method "japanese-mozc")
   (setq mozc-candidate-style 'echo-area)
-  (setq mozc-candidate-style 'overlay)
+  ;(setq mozc-candidate-style 'overlay)
   (global-set-key (kbd "C-o") 'toggle-input-method))

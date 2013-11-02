@@ -1,38 +1,14 @@
-(when (require 'rcodetools nil t)
-  (setq rct-find-tag-if-available nil)
+(remove-hook 'ruby-mode-hook 'ruby-electric-mode)
+ 
+; enable and disable ruby-electric-mode to stop ruby-mode 
+; from handling curly braces
+(defun ruby-mode-hook-for-fixing-ruby-electric ()
+  (require 'ruby-electric)
+  (ruby-electric-mode)
+  (ruby-electric-mode -1))
+(add-hook 'ruby-mode-hook 
+          'ruby-mode-hook-for-fixing-ruby-electric)
+(remove-hook 'ruby-mode-hook 'ruby-electric-mode)
 
-  (defun make-ruby-scratch-buffer ()
-    (with-current-buffer (get-buffer-create "*ruby scratch*")
-      (ruby-mode)
-      (current-buffer)))
 
-  (defun ruby-scratch ()
-    (interactive)
-    (pop-to-buffer (make-ruby-scratch-buffer)))
-
-  (add-hook
-   'ruby-mode-hook
-   '(lambda ()
-      (mapc (lambda (pair)
-              (apply #'define-key ruby-mode-map pair))
-            (list
-             '([(meta i)] rct-complete-symbol)
-             '([(meta control i)] rct-complete-symbol)
-             '([(control c) (control t)] ruby-toggle-buffer)
-             '([(control c) (control d)] xmp)
-             '([(control c) (control f)] rct-ri))))))
-
-(autoload 'ruby-mode "ruby-mode"
-  "Mode for editing ruby source files" t)
-(setq auto-mode-alist
-      (append '(("\\.rb$" . ruby-mode)) auto-mode-alist))
-(setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
-                                     interpreter-mode-alist))
-(when (locate-library "inf-ruby")
-  (autoload 'run-ruby "inf-ruby"
-    "Run an inferior Ruby process")
-  (autoload 'inf-ruby-keys "inf-ruby"
-    "Set local key defs for inf-ruby in ruby-mode")
-  (add-hook 'ruby-mode-hook
-            '(lambda ()
-               (inf-ruby-keys))))
+(require 'ruby-end)
