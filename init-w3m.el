@@ -86,8 +86,8 @@
 ;(global-set-key "\C-xm" 'browse-url-at-point)
 ;(global-set-key "\C-xm" 'w3m-browse-url)
 
-(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
-(setq browse-url-browser-function 'w3m-browse-url)
+;(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+;(setq browse-url-browser-function 'w3m-browse-url)
 
 ;(if (featurep 'xemacs)
 ;    (global-set-key [(control return)] 'w3m-browse-url)
@@ -130,22 +130,22 @@
 ;;
 ;; emacs-w3m で見られない URL のブラックリスト
 ;; from: http://at-aka.blogspot.com/2005/10/quickurl-emacs-w3m-firefox-url.html
-(setq browse-url-dhtml-url-list
-      '("http://www.google.com/reader/"
-	"http://maps.google.co.jp/"
-	"http://map.yahoo.co.jp/"
-	"http://map.labs.goo.ne.jp/"
-	"http://www.haloscan.com/"
-	"http://sitemeter.com/"
-	"http://www.hmv.co.jp/"
-	"http://www.youtube.com"
-))
+;; (setq browse-url-dhtml-url-list
+;;       '("http://www.google.com/reader/"
+;; 	"http://maps.google.co.jp/"
+;; 	"http://map.yahoo.co.jp/"
+;; 	"http://map.labs.goo.ne.jp/"
+;; 	"http://www.haloscan.com/"
+;; 	"http://sitemeter.com/"
+;; 	"http://www.hmv.co.jp/"
+;; 	"http://www.youtube.com"
+;; ))
 ;;
 ;; ブラッリストにマッチしたら firefox、しなかったら emacs-w3m。 
 ;;
-(setq browse-url-browser-function 
-      `((,(concat "^" (regexp-opt browse-url-dhtml-url-list)) . browse-url-mozilla)
-	("." . w3m-browse-url)))
+;; (setq browse-url-browser-function 
+;;       `((,(concat "^" (regexp-opt browse-url-dhtml-url-list)) . browse-url-mozilla)
+;; 	("." . w3m-browse-url)))
 
 
 ;; Amazon Simple URI
@@ -188,16 +188,16 @@
                         shorturl shorturl))))
         (insert "\n")))))
 
-(if (<= emacs-major-version 21)
-    (progn
-      (setq browse-url-browser-function 'browse-url-netscape)
-      (autoload 'browse-url-at-mouse "browse-url"
-        "Ask a WWW browser to load a URL clicked with the mouse." t)
-      (global-set-key [mouse-2] 'browse-url-netscape))
-  (progn
-    (setq browse-url-browser-function 'browse-url-firefox)
-    (autoload 'browse-url-at-mouse "browse-url-firefox"
-      "Ask a WWW browser to load a URL clicked with the mouse." t)
-    (global-set-key [mouse-2] 'browse-url-firefox)))
+;; (if (<= emacs-major-version 21)
+;;     (progn
+;;       (setq browse-url-browser-function 'browse-url-netscape)
+;;       (autoload 'browse-url-at-mouse "browse-url"
+;;         "Ask a WWW browser to load a URL clicked with the mouse." t)
+;;       (global-set-key [mouse-2] 'browse-url-netscape))
+;;   (progn
+;;     (setq browse-url-browser-function 'browse-url-firefox)
+;;     (autoload 'browse-url-at-mouse "browse-url-firefox"
+;;       "Ask a WWW browser to load a URL clicked with the mouse." t)
+;;     (global-set-key [mouse-2] 'browse-url-firefox)))
 
 
