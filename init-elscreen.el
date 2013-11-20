@@ -6,4 +6,5 @@
       (define-key elscreen-map "\C-@" 'elscreen-next)
       (define-key elscreen-map [?\C-\ ] 'elscreen-next)
       (define-key elscreen-map "@" 'elscreen-next)
-      (define-key elscreen-map [?\ ] 'elscreen-next)))
+      (define-key elscreen-map [?\ ] 'elscreen-next)
+      (elscreen-start)))

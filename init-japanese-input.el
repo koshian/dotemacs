@@ -35,3 +35,4 @@
       (setq mozc-candidate-style 'echo-area)
     (setq mozc-candidate-style 'overlay))
   (global-set-key (kbd "C-o") 'toggle-input-method))
+
