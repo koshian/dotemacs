@@ -32,7 +32,7 @@
     (progn
       (require 'howm)
       (setq howm-keyword-file "~/howm/.howm-keys")
-      (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.howm.txt")
+      (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.howm.md")
       (add-to-list 'auto-mode-alist '("\\.howm.txt$" . markdown-mode))
       (setq howm-template
             "= %title%cursor\n================================\n%file\n\n")))
