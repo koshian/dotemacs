@@ -12,6 +12,9 @@
 
 (setq vc-header-alist nil)
 
+; use auto-complete
+(ac-config-default)
+
 (if (locate-library "package")
     (progn
       (require 'package)
