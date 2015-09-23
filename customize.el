@@ -127,3 +127,8 @@ This is just like calling `other-window' with ARG negated."
 ;; use aspell
 (setq ispell-program-name "aspell")
 
+;; it's all text の文字化け対策
+(add-hook 'server-visit-hook
+          (lambda ()
+            (set-terminal-coding-system 'utf-8)
+            (set-keyboard-coding-system 'utf-8)))

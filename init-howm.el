@@ -27,17 +27,17 @@
 ;(require 'org)
 ;(setq howm-view-title-header "*")
 ;(add-hook 'org-mode-hook 'howm-mode)
-
-(require 'howm)
-(setq howm-keyword-file "~/howm/.howm-keys")
-(setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.howm.txt")
-(add-to-list 'auto-mode-alist '("\\.howm.txt$" . markdown-mode))
+(if (locate-library "hown")
+    (require 'howm)
+  (setq howm-keyword-file "~/howm/.howm-keys")
+  (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.howm.txt")
+  (add-to-list 'auto-mode-alist '("\\.howm.txt$" . markdown-mode)))
 
 ;; markdown template
 ;(setq howm-user-template (concat "= %title%cursor\n"
-;                                 "--------------------------------\n"
+;                                 "================================\n"
 ;                                 "%date %file"))
-(setq howm-template "= %title%cursor\n--------------------------------\n%file\n\n")
+(setq howm-template "= %title%cursor\n================================\n%file\n\n")
 
 
 (provide 'init-howm)
