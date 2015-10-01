@@ -9,21 +9,11 @@
 (setq exec-path (parse-colon-path (getenv "PATH")))
 (setq eshell-path-env (getenv "PATH"))
 
-(if (locate-library "rcodetools")
-    (progn
-      (require 'rcodetools)
-      (setq rct-find-tag-if-available nil)
-      (defun ruby-mode-hook-rcodetools ()
-	(define-key ruby-mode-map (kbd "<C-tab>") 'rct-complete-symbol)
-	(define-key ruby-mode-map (kbd "<C-return>") 'xmp))))
-
-;(global-set-key (kbd "<C-return>") 'xmp)
-
-(add-hook 'ruby-mode-hook 'ruby-mode-hook-rcodetools)
 (defun make-ruby-scratch-buffer ()
   (with-current-buffer (get-buffer-create "*ruby scratch*")
     (ruby-mode)
     (current-buffer)))
+
 (defun ruby-scratch ()
   (interactive)
   (pop-to-buffer (make-ruby-scratch-buffer)))
@@ -41,20 +31,50 @@
 
 (if (locate-library "auto-complete")
     (add-hook 'ruby-mode-hook
-              (lambda () (add-to-list 'ac-sources 'ac-source-abbrev)))
-  (if (locate-library "robe")
-      (add-hook 'robe-mode-hook 'ac-robe-setup)))
+              (lambda ()
+                (add-to-list 'ac-sources 'ac-source-abbrev)
+                (load-auto-complete))))
+
+
+(if (locate-library "robe")
+    (add-hook 'robe-mode-hook 'ac-robe-setup))
 
 (if (locate-library "ruby-end")
     (require 'ruby-end))
 
 
-(add-hook 'ruby-mode-hook '(lambda ()
-                             (require 'rcodetools)
-                             (require 'anything-rcodetools)
-                             (require 'myrurema)
-                             (load-auto-complete)
-                             (setq ruby-deep-indent-paren-style nil)))
+(if (and (locate-library "rcodetools")
+         (locate-library "anything"))
+    ;; from http://qiita.com/ironsand/items/ce7c02eb46fcc25a438b
+    (progn
+      (require 'rcodetools)
+      (require 'anything-rcodetools)
+      (setq rct-find-tag-if-available nil)
+      (defun ruby-mode-hook-rcodetools ()
+        (define-key ruby-mode-map (kbd "<C-tab>") 'rct-complete-symbol)
+        (define-key ruby-mode-map (kbd "<M-RET>") 'xmp))
+
+      (add-hook 'ruby-mode-hook 'ruby-mode-hook-rcodetools)
+
+      (defun make-ruby-scratch-buffer ()
+        (with-current-buffer (get-buffer-create "*ruby scratch*")
+          (ruby-mode)
+          (current-buffer)))
+      (defun ruby-scratch ()
+        (interactive)
+        (pop-to-buffer (make-ruby-scratch-buffer)))))
+
+(if (locate-library "myrurema")
+    (progn
+      (require 'myrurema)
+      (defun ruby-mode-hooks-myrurema ()
+        ;(define-key ruby-mode-map (kbd "<C-return>") 'rurema)
+        (define-key ruby-mode-map (kbd "<C-return>" 'rurema:at-point)))
+
+      (add-hook 'ruby-mode-hook 'ruby-mode-hooks-myrurema)))
+
+
+(setq ruby-deep-indent-paren-style nil)
 
 
 (require 'ruby-block)
