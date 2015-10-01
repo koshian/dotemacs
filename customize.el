@@ -98,10 +98,14 @@ This is just like calling `other-window' with ARG negated."
 
 ;; Emacs20以降ならiswitchbを使う。
 (if (and (>= emacs-major-version 20)
-         (< emacs-major-version 23))
+         (< emacs-major-version 24))
     (progn
       (iswitchb-mode)
       (iswitchb-default-keybindings)))
+
+;; After Emacs 24, use icomplete-mode
+(if (>= emacs-major-version 24)
+      (icomplete-mode))
 
 (setq fill-column 60)
 
@@ -118,11 +122,6 @@ This is just like calling `other-window' with ARG negated."
 
 ;; 大文字小文字を区別しない
 (setq read-file-name-completion-ignore-case t)
-
-;; Emacs20以降ならiswitchbを使う。
-(if (>= emacs-major-version 20)
-	(iswitchb-mode)
-      (iswitchb-default-keybindings))
 
 ;; use aspell
 (setq ispell-program-name "aspell")

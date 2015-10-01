@@ -9,11 +9,13 @@
 (setq exec-path (parse-colon-path (getenv "PATH")))
 (setq eshell-path-env (getenv "PATH"))
 
-(require 'rcodetools)
-(setq rct-find-tag-if-available nil)
-(defun ruby-mode-hook-rcodetools ()
-  (define-key ruby-mode-map (kbd "<C-tab>") 'rct-complete-symbol)
-  (define-key ruby-mode-map (kbd "<C-return>") 'xmp))
+(if (locate-library "rcodetools")
+    (progn
+      (require 'rcodetools)
+      (setq rct-find-tag-if-available nil)
+      (defun ruby-mode-hook-rcodetools ()
+	(define-key ruby-mode-map (kbd "<C-tab>") 'rct-complete-symbol)
+	(define-key ruby-mode-map (kbd "<C-return>") 'xmp))))
 
 ;(global-set-key (kbd "<C-return>") 'xmp)
 
