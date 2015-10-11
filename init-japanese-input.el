@@ -31,7 +31,7 @@
   (require 'mozc)
   (set-language-environment "Japanese")
   (setq default-input-method "japanese-mozc")
-  (if (eq window-system 'ns) ; does not work overlay on NS with ELScreen
+  (if (and (eq window-system 'ns) (< emacs-major-version 24)) ; does not work overlay on NS with ELScreen
       (setq mozc-candidate-style 'echo-area)
     (setq mozc-candidate-style 'overlay))
   (global-set-key (kbd "C-o") 'toggle-input-method))

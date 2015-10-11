@@ -76,10 +76,11 @@
 
 (setq ruby-deep-indent-paren-style nil)
 
-
-(require 'ruby-block)
-(ruby-block-mode t)
-(setq ruby-block-highlight-toggle t)
+(if (locate-library "ruby-block")
+    (progn
+      (require 'ruby-block)
+      (ruby-block-mode t)
+      (setq ruby-block-highlight-toggle t)))
 
 ; auto-complete
 (defun load-auto-complete ()
