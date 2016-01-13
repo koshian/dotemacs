@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: el-get-bundle
+# key: el
+# binding: direct-keybinding
+# --
+(el-get-bundle ${1:elpa}:${2:pkg-name})

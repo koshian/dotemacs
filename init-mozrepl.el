@@ -29,15 +29,18 @@
     (add-hook 'after-save-hook
               '(lambda ()
                  (interactive)
-                 (comint-send-string (inferior-moz-process) "
-                    BrowserReload();
-                  "))))
-  ;; (add-hook 'php-mode-hook 'auto-reload-firefox-on-after-save-hook)
+                 (comint-send-string (inferior-moz-process)
+                                        ;"setTimeout(function(){content.document.location.reload(true);}, '500');"))
+                                     "BrowserReload();"))
+              'append 'local))
+
+  (add-hook 'php-mode-hook 'auto-reload-firefox-on-after-save-hook)
   ;; (add-hook 'ruby-mode-hook 'auto-reload-firefox-on-after-save-hook)
-  ;; (add-hook 'slim-mode-hook 'auto-reload-firefox-on-after-save-hook)
-  ;; (add-hook 'html-mode-hook 'auto-reload-firefox-on-after-save-hook)
-  ;; (add-hook 'js-mode-hook 'auto-reload-firefox-on-after-save-hook)
-  ;; (add-hook 'css-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  (add-hook 'slim-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  (add-hook 'haml-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  (add-hook 'html-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  (add-hook 'js-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  (add-hook 'css-mode-hook 'auto-reload-firefox-on-after-save-hook)
   )
 
 (provide 'init-mozrepl)

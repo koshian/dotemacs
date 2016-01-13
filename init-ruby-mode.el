@@ -69,7 +69,7 @@
       (require 'myrurema)
       (defun ruby-mode-hooks-myrurema ()
         ;(define-key ruby-mode-map (kbd "<C-return>") 'rurema)
-        (define-key ruby-mode-map (kbd "<C-return>" 'rurema:at-point)))
+        (define-key ruby-mode-map (kbd "<C-return>") 'rurema:at-point))
 
       (add-hook 'ruby-mode-hook 'ruby-mode-hooks-myrurema)))
 
@@ -117,3 +117,9 @@
               'yaml-mode-hook
               'javascript-mode-hook))
   (dolist (hook rinari-major-modes) (add-hook hook 'rinari-launch)))
+
+;; flycheck
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (setq flycheck-checker 'ruby-rubocop)
+             (flycheck-mode 1)))
