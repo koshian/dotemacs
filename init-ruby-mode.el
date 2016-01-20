@@ -122,5 +122,5 @@
 ;; flycheck
 (add-hook 'ruby-mode-hook
           '(lambda ()
-             (setq flycheck-checker 'ruby-rubocop)
+             (setq flycheck-checker 'ruby-lint)
              (flycheck-mode 1)))

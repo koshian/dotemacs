@@ -77,6 +77,9 @@
 (el-get-bundle elpa:typescript)
 (el-get-bundle elpa:yaml-mode)
 (el-get-bundle elpa:yasnippet)
+(el-get-bundle elpa:emoji-fontset
+  (emoji-fontset-enable "Symbola"))
+(el-get-bundle elpa:emoji-cheat-sheet-plus)
 
 ;;; Code:
 
