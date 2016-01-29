@@ -7,14 +7,16 @@
 
 ;;; Code:
 
+;; initial setting from http://tarao.hatenablog.com/entry/20150221/1424518030
+(when load-file-name
+  (setq user-emacs-directory (file-name-directory load-file-name)))
+
+;; my name and address
 (setq user-full-name "Sugano `Koshian' Yoshihisa(E)"
       user-mail-address "koshian@foxking.org")
 
+;; no use vc-header
 (setq vc-header-alist nil)
-
-; use auto-complete
-(if (locate-library "auto-complete")
-    (ac-config-default))
 
 (if (locate-library "package")
     (progn
@@ -39,6 +41,8 @@
               "/usr/local/bin"
               (expand-file-name "~/bin")
               (expand-file-name "~/.emacs.d/bin")
+              (expand-file-name "~/var/go/bin")
+              (expand-file-name "/usr/local/var/rbenv/shims")
               ))
   (when (and (file-exists-p dir) (not (member dir exec-path)))
     (setenv "PATH" (concat dir ":" (getenv "PATH")))
@@ -65,7 +69,7 @@
             (when (load file nil t)
               (message "`%s' loaded." file))) files)))
 
-;; template settings
+;; Template settings
 (setq auto-insert-directory templates-directory)
 (auto-insert-mode t)
 (setq auto-insert-query nil)
@@ -77,6 +81,8 @@
 ;; load essential libraries.
 ;(load-directory-files libraries-directory "^.+el$")
 
+;; load el-get config
+(load (expand-file-name "el-get-config.el" user-emacs-directory))
 ;; load preferences.
 (load-directory-files preferences-directory "^init-.+el$")
 (load custom-file)
