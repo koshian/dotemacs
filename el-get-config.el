@@ -38,7 +38,6 @@
 (el-get-bundle elpa:anything)
 (el-get-bundle elpa:auto-complete)
 (el-get-bundle elpa:auto-install)
-(el-get-bundle elpa:codesearch)
 (el-get-bundle elpa:codic)
 (el-get-bundle elpa:coffee-mode)
 (el-get-bundle elpa:dash)

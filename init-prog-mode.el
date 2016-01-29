@@ -29,10 +29,6 @@
 (global-set-key [(super n)] 'flycheck-next-error)
 (global-set-key [(super p)] 'flycheck-previous-error)
 
-;; codesaerch.el for google code search
-(require 'codesearch)
-(codesearch-build-index (expand-file-name "~/var/codesearch"))
-
 ;; yasnippet
 (require 'yasnippet)
 (require 'dropdown-list)
