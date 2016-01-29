@@ -76,6 +76,7 @@
 (el-get-bundle elpa:slim-mode)
 (el-get-bundle elpa:typescript)
 (el-get-bundle elpa:yaml-mode)
+(el-get-bundle elpa:dropdown-list)
 (el-get-bundle elpa:yasnippet)
 (el-get-bundle elpa:emoji-fontset
   (emoji-fontset-enable "Symbola"))

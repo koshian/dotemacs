@@ -29,74 +29,45 @@
 ;(remove-hook 'ruby-mode-hook 'ruby-electric-mode)
 
 
-(if (locate-library "auto-complete")
-    (add-hook 'ruby-mode-hook
-              (lambda ()
-                (add-to-list 'ac-sources 'ac-source-abbrev)
-                (load-auto-complete))))
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (add-to-list 'ac-sources 'ac-source-abbrev)
+            (add-to-list 'ac-sources 'ac-source-yasnippet)
+            (auto-complete-mode t)))
 
+(add-hook 'robe-mode-hook 'ac-robe-setup)
+(require 'ruby-end)
 
-(if (locate-library "robe")
-    (add-hook 'robe-mode-hook 'ac-robe-setup))
+;; from http://qiita.com/ironsand/items/ce7c02eb46fcc25a438b
+(require 'rcodetools)
+(require 'anything-rcodetools)
+(setq rct-find-tag-if-available nil)
+(defun ruby-mode-hook-rcodetools ()
+  (define-key ruby-mode-map (kbd "<C-tab>") 'rct-complete-symbol)
+  (define-key ruby-mode-map (kbd "<M-RET>") 'xmp))
 
-(if (locate-library "ruby-end")
-    (require 'ruby-end))
+(add-hook 'ruby-mode-hook 'ruby-mode-hook-rcodetools)
 
+(defun make-ruby-scratch-buffer ()
+  (with-current-buffer (get-buffer-create "*ruby scratch*")
+    (ruby-mode)
+    (current-buffer)))
 
-(if (and (locate-library "rcodetools")
-         (locate-library "anything"))
-    ;; from http://qiita.com/ironsand/items/ce7c02eb46fcc25a438b
-    (progn
-      (require 'rcodetools)
-      (require 'anything-rcodetools)
-      (setq rct-find-tag-if-available nil)
-      (defun ruby-mode-hook-rcodetools ()
-        (define-key ruby-mode-map (kbd "<C-tab>") 'rct-complete-symbol)
-        (define-key ruby-mode-map (kbd "<M-RET>") 'xmp))
+(defun ruby-scratch ()
+  (interactive)
+  (pop-to-buffer (make-ruby-scratch-buffer)))
 
-      (add-hook 'ruby-mode-hook 'ruby-mode-hook-rcodetools)
-
-      (defun make-ruby-scratch-buffer ()
-        (with-current-buffer (get-buffer-create "*ruby scratch*")
-          (ruby-mode)
-          (current-buffer)))
-      (defun ruby-scratch ()
-        (interactive)
-        (pop-to-buffer (make-ruby-scratch-buffer)))))
-
-(if (locate-library "myrurema")
-    (progn
-      (require 'myrurema)
-      (defun ruby-mode-hooks-myrurema ()
-        ;(define-key ruby-mode-map (kbd "<C-return>") 'rurema)
-        (define-key ruby-mode-map (kbd "<C-return>") 'rurema:at-point))
-
-      (add-hook 'ruby-mode-hook 'ruby-mode-hooks-myrurema)))
-
+(require 'myrurema)
+(defun ruby-mode-hooks-myrurema ()
+  ;(define-key ruby-mode-map (kbd "<C-return>") 'rurema)
+  (define-key ruby-mode-map (kbd "<C-return>") 'rurema:at-point))
+(add-hook 'ruby-mode-hook 'ruby-mode-hooks-myrurema)
 
 (setq ruby-deep-indent-paren-style nil)
 
-(if (locate-library "ruby-block")
-    (progn
-      (require 'ruby-block)
-      (ruby-block-mode t)
-      (setq ruby-block-highlight-toggle t)))
-
-; auto-complete
-(defun load-auto-complete ()
-  (require 'auto-complete-config)
-  (ac-config-default)
-
-  (add-to-list 'ac-dictionary-directories "~/.emacs.d/etc/auto-complete")
-
-  (setq ac-use-menu-map t)
-  (define-key ac-menu-map "\C-n" 'ac-next)
-  (define-key ac-menu-map "\C-p" 'ac-previous)
-
-  (setq ac-auto-show-menu 0.2)
-  (setq ac-menu-height 20)
-
-  (robe-mode))
+(require 'ruby-block)
+(ruby-block-mode t)
+(setq ruby-block-highlight-toggle t)
 
 ; robe
 (autoload 'robe-mode "robe" "Code navigation, documentation lookup and completion for Ruby" t nil)
@@ -122,5 +93,5 @@
 ;; flycheck
 (add-hook 'ruby-mode-hook
           '(lambda ()
-             (setq flycheck-checker 'ruby-lint)
+             (setq flycheck-checker 'ruby-rubocop)
              (flycheck-mode 1)))

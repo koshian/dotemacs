@@ -18,13 +18,6 @@
 ;; no use vc-header
 (setq vc-header-alist nil)
 
-; use auto-complete
-(if (locate-library "auto-complete")
-    (progn
-      (ac-config-default)
-      (global-auto-complete-mode t)
-      (add-to-list 'ac-sources 'ac-source-yasnippet)))
-
 (if (locate-library "package")
     (progn
       (require 'package)
