@@ -7,7 +7,7 @@
 
 (setq auto-mode-alist
       (cons
-       '("\\.vue$" . js-mode) auto-mode-alist))
+       '("\\.vue$" . vue-mode) auto-mode-alist))
 
 (provide 'init-vue)
 ;;; init-vue.el ends here
