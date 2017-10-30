@@ -42,10 +42,12 @@
 (global-auto-complete-mode t)
 
 ; use rainbow-mode on css/scss/less mode
-(require 'rainbow-mode)
-(add-hook 'css-mode-hook 'rainbow-mode)
-(add-hook 'scss-mode-hook 'rainbow-mode)
-(add-hook 'less-mode-hook 'rainbow-mode)
+(if (locate-library "rainbow-mode")
+  (progn
+    (require 'rainbow-mode)
+    (add-hook 'css-mode-hook 'rainbow-mode)
+    (add-hook 'scss-mode-hook 'rainbow-mode)
+    (add-hook 'less-mode-hook 'rainbow-mode)))
 
 (provide 'init-prog-mode)
 ;;; init-prog-mode.el ends here
