@@ -131,3 +131,26 @@ This is just like calling `other-window' with ARG negated."
           (lambda ()
             (set-terminal-coding-system 'utf-8)
             (set-keyboard-coding-system 'utf-8)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (w3m apel flim semi wanderlust yaml-mode typescript slim-mode scss-mode sass-mode rubyinterpol ruby-tools ruby-test-mode ruby-refactor ruby-interpolation ruby-hash-syntax ruby-end ruby-electric ruby-dev ruby-block ruby-additional robe rinari react-snippets rainbow-mode projectile-rails php-mode moz-controller markdown-mode+ less-css-mode flycheck emoji-fontset emoji-cheat-sheet-plus elscreen edit-server-htmlize dropdown-list coffee-mode codic codesearch auto-install anything ac-inf-ruby))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(builtin-face ((((class color) (background light)) (:foreground "purple"))))
+ '(comment-face ((((class color) (background light)) (:foreground "IndianRed"))))
+ '(constant-face ((((class color) (background light)) (:foreground "black"))))
+ '(function-name-face ((((class color) (background light)) (:foreground "blue"))))
+ '(keyword-face ((((class color) (background light)) (:foreground "blue"))))
+ '(sh-heredoc-face ((((class color) (background light)) (:foreground "IndianRed"))) t)
+ '(string-face ((((class color) (background light)) (:foreground "purple"))))
+ '(type-face ((((class color) (background light)) (:foreground "IndianRed"))))
+ '(variable-name-face ((((class color) (background light)) (:foreground "DarkGreen"))))
+ '(warning-face ((((class color) (background light)) (:foreground "blue")))))

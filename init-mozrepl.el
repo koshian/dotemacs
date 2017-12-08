@@ -35,7 +35,7 @@
               'append 'local))
 
   (add-hook 'php-mode-hook 'auto-reload-firefox-on-after-save-hook)
-  ;; (add-hook 'ruby-mode-hook 'auto-reload-firefox-on-after-save-hook)
+  (add-hook 'ruby-mode-hook 'auto-reload-firefox-on-after-save-hook)
   (add-hook 'slim-mode-hook 'auto-reload-firefox-on-after-save-hook)
   (add-hook 'haml-mode-hook 'auto-reload-firefox-on-after-save-hook)
   (add-hook 'html-mode-hook 'auto-reload-firefox-on-after-save-hook)

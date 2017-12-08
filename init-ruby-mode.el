@@ -94,4 +94,5 @@
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (setq flycheck-checker 'ruby-rubocop)
+             (setq flycheck-check-syntax-automatically '(mode-enabled save))
              (flycheck-mode 1)))

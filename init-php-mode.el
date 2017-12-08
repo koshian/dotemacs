@@ -6,7 +6,7 @@
           '(lambda ()
              (progn
                (c-set-style "stroustrup")
-               (setq indent-tabs-mode t)
-               (setq tab-width 8)
-               (setq c-basic-offset 8)
-               (setq standard-indent 8))))
+               (setq indent-tabs-mode nil)
+               (setq tab-width 2)
+               (setq c-basic-offset 2)
+               (setq standard-indent 2))))

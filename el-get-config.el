@@ -77,9 +77,9 @@
 (el-get-bundle elpa:yaml-mode)
 (el-get-bundle elpa:dropdown-list)
 (el-get-bundle elpa:yasnippet)
-(el-get-bundle elpa:emoji-fontset
-  (emoji-fontset-enable "Symbola"))
-(el-get-bundle elpa:emoji-cheat-sheet-plus)
+;(el-get-bundle elpa:emoji-fontset
+;  (emoji-fontset-enable "Symbola"))
+;(el-get-bundle elpa:emoji-cheat-sheet-plus)
 (el-get-bundle rainbow-mode)
 
 ;;; Code:

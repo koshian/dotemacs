@@ -93,7 +93,7 @@
 ;    (global-set-key [(control return)] 'w3m-browse-url)
 ;  (global-set-key [C-return] 'w3m-browse-url))
 ;(global-set-key "\C-x\C-m" 'w3m-browse-url)
-(global-set-key [(meta return )] 'w3m-browse-url)
+;(global-set-key [(meta return )] 'w3m-browse-url)
 ;(global-set-key [(super m)] 'w3m-view-url-with-external-browser)
 (global-set-key [(super f)] 'w3m-find-file)
 (global-set-key [(super m)] 'w3m-view-this-url-new-session)
