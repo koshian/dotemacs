@@ -30,10 +30,10 @@
 (global-set-key [(super p)] 'flycheck-previous-error)
 
 ;; yasnippet
-(require 'yasnippet)
-(require 'dropdown-list)
-(setq yas-prompt-functions '(yas-dropdown-prompt yas-ido-prompt))
-(yas-global-mode 1)
+;(require 'yasnippet)
+;(require 'dropdown-list)
+;(setq yas-prompt-functions '(yas-dropdown-prompt yas-ido-prompt))
+;(yas-global-mode 1)
 
 ; use auto-complete
 (ac-config-default)
