@@ -18,6 +18,9 @@
 ;; no use vc-header
 (setq vc-header-alist nil)
 
+; no use tab
+(setq-default indent-tabs-mode nil)
+
 ; (if (locate-library "package")
 ;     (progn
 ;       (require 'package)
@@ -27,6 +30,8 @@
 ;       (add-to-list 'package-archives
 ; 		   '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;       (package-initialize)))
+
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
 
 (when (require 'edit-server nil t)
   (setq edit-server-new-frame nil)
@@ -86,5 +91,17 @@
 ;; load preferences.
 (load-directory-files preferences-directory "^init-.+el$")
 (load custom-file)
+
+(setenv "EDITORCONFIG_CORE_LIBRARY_PATH"
+        (substitute-in-file-name "$HOME/.emacs.d/el-get/editorconfig/"))
+
+(with-eval-after-load 'editorconfig
+  (add-to-list 'editorconfig-indentation-alist
+               '(vue-mode css-indent-offset
+                          sgml-basic-offset
+                          vue-html-tab-width
+                          ssass-tab-width
+                          )))
+(editorconfig-mode t)
 
 ;;; init.el ends here
