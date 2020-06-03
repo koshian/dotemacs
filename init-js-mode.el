@@ -17,3 +17,6 @@
 ;;              (flycheck-mode 1)))
 (add-hook 'js-mode-hook
           (flycheck-mode 1))
+
+(provide 'init-js-mode)
+;;; init-js-mode.el ends here
