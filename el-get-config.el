@@ -100,6 +100,11 @@
 (el-get-bundle elpa:typescript-mode)
 (el-get-bundle elpa:vue-mode)
 (el-get-bundle elpa:vue-html-mode)
+(el-get-bundle elpa:flymake-jslint)
+(el-get-bundle dockerfile-mode)
+(el-get-bundle web-mode)
+(el-get-bundle editorconfig)
+(el-get-bundle add-node-modules-path)
 ;;; Code:
 
 
